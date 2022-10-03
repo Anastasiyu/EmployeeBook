@@ -4,14 +4,16 @@ public class Employee {
     private  String surName;
     private String name;
     private  String patronomicName;
-    private int department;
     private double salary;
-    private static int idCounter = 0;
+    private int department;
+
+    private static int idCounter = 1;
 
 
-    public Employee(String surName, String name, String patronymicName, double salary, int department) {
 
-        this.id = ++idCounter;
+    public Employee(String surName, String name, String patronomicName, double salary, int department) {
+
+        this.id = idCounter++;
         this.name = name;
         this.surName = surName;
         this.patronomicName = patronomicName;
@@ -75,18 +77,18 @@ public class Employee {
     }
 
     public void setSalary(double salary) {
-        if (salary <0) {
+        if (salary < 0) {
             throw new IllegalArgumentException("Оплата труда не может быть меньше 0 )");
         }
         this.salary = salary;
     }
+        public String setSurName() {
+            return surName;
+        }
+
     @Override
     public String toString() {
-        return   "" + id + "/ Ф.И.О.: " + surName + " "+ name+" "+ patronomicName  + ", номер отдела- " + department + ". Сумма зарплаты: " + salary +"рублей.";
+        return   "" + id + "/ Ф.И.О.: " + surName + " "+ name+" "+ patronomicName + ". Сумма зарплаты: " + salary +"рублей."+ ", номер отдела- " + department;
     }
 
-
-    public String setSurName() {
-        return surName;
-    }
 }
